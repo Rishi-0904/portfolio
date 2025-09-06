@@ -1,0 +1,623 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishi Raj Jaiswal - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["var(--font-sans)"],
+                }
+            },
+        }
+    };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: hsl(0 0% 98%);
+            --foreground: hsl(215 25% 15%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(215 25% 15%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(215 25% 15%);
+            --primary: hsl(215 70% 50%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(215 25% 15%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(215 15% 85%);
+            --muted-foreground: hsl(215 25% 45%);
+            --accent: hsl(35 100% 55%);
+            --accent-foreground: hsl(0 0% 100%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(0 0% 98%);
+            --border: hsl(215 15% 85%);
+            --input: hsl(215 15% 85%);
+            --ring: hsl(215 70% 50%);
+            --radius: 0.5rem;
+            --font-sans: "Inter", system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .skill-icon:hover {
+            transform: translateY(-4px);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-badge {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .achievement-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+    <!-- Navigation -->
+    <!-- @COMPONENT: NavigationBar [responsive navigation with smooth scrolling] -->
+    <nav class="fixed top-0 left-0 right-0 bg-card/80 backdrop-blur-md z-50 border-b border-border">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-primary">
+                    Rishi Raj Jaiswal
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-foreground hover:text-primary">Home</a>
+                    <a href="#education" class="nav-link text-foreground hover:text-primary">Education</a>
+                    <a href="#skills" class="nav-link text-foreground hover:text-primary">Skills</a>
+                    <a href="#projects" class="nav-link text-foreground hover:text-primary">Projects</a>
+                    <a href="#achievements" class="nav-link text-foreground hover:text-primary">Achievements</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-foreground hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-border pt-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-foreground hover:text-primary">Home</a>
+                    <a href="#education" class="text-foreground hover:text-primary">Education</a>
+                    <a href="#skills" class="text-foreground hover:text-primary">Skills</a>
+                    <a href="#projects" class="text-foreground hover:text-primary">Projects</a>
+                    <a href="#achievements" class="text-foreground hover:text-primary">Achievements</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: NavigationBar -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [animated introduction with name and title] -->
+    <section id="home" class="min-h-screen flex items-center justify-center hero-gradient">
+        <div class="container mx-auto px-6 text-center text-white">
+            <div class="fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <span data-bind="user.fullName">Rishi Raj Jaiswal</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl font-medium mb-8 text-white/90">
+                    Computer Science & Engineering Student
+                </h2>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-12 text-white/80">
+                    Passionate about web development, competitive programming, and building innovative solutions. 
+                    Currently pursuing B.Tech in Computer Science at MNNIT Allahabad.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#projects" class="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-medium transition-colors">
+                        View Projects
+                    </a>
+                    <a href="#skills" class="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-lg font-medium transition-colors">
+                        See Skills
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Education Section -->
+    <!-- @COMPONENT: EducationSection [college information display] -->
+    <section id="education" class="py-16 bg-card">
+        <div class="container mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold text-center mb-12 text-foreground">Education</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-background rounded-xl p-8 shadow-lg border border-border">
+                        <div class="flex flex-col lg:flex-row items-start lg:items-center gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-2xl text-primary-foreground"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-bold text-foreground mb-2" data-bind="education.degree">
+                                    Bachelor of Technology (B.Tech.)
+                                </h3>
+                                <h4 class="text-xl font-semibold text-primary mb-2" data-bind="education.field">
+                                    Computer Science and Engineering
+                                </h4>
+                                <p class="text-lg text-muted-foreground mb-2" data-bind="education.institution">
+                                    Motilal Nehru National Institute of Technology, Allahabad
+                                </p>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-calendar text-primary"></i>
+                                        <span class="text-muted-foreground" data-bind="education.year">2025</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-trophy text-accent"></i>
+                                        <span class="font-semibold text-foreground">CGPA: <span data-bind="education.cgpa">8.36</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: EducationSection -->
+
+    <!-- Technical Skills Section -->
+    <!-- @COMPONENT: TechnicalSkillsSection [programming languages and technical skills with icons] -->
+    <section id="skills" class="py-16 bg-background">
+        <div class="container mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold text-center mb-12 text-foreground">Technical Skills</h2>
+                
+                <!-- Programming Languages -->
+                <div class="max-w-6xl mx-auto mb-16">
+                    <h3 class="text-2xl font-semibold text-center mb-8 text-foreground">Programming Languages</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                        <!-- @MAP: programmingLanguages.map(language => ( -->
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fab fa-cuttlefish text-3xl text-primary" title="C++"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="language.name">C++</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fas fa-code text-3xl text-primary" title="C"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="language.name">C</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fab fa-js-square text-3xl text-accent" title="JavaScript"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="language.name">JavaScript</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fab fa-js-square text-3xl text-primary" title="TypeScript"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="language.name">TypeScript</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fab fa-python text-3xl text-accent" title="Python"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="language.name">Python</h4>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+
+                <!-- Technologies & Tools -->
+                <div class="max-w-6xl mx-auto mb-16">
+                    <h3 class="text-2xl font-semibold text-center mb-8 text-foreground">Technologies & Databases</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <!-- @MAP: technologies.map(tech => ( -->
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fab fa-node-js text-3xl text-accent" title="Node.js"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="tech.name">Node.js</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fas fa-leaf text-3xl text-primary" title="MongoDB"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="tech.name">MongoDB</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fas fa-database text-3xl text-accent" title="SQL"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="tech.name">SQL</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="skill-icon w-20 h-20 mx-auto mb-4 bg-card rounded-full flex items-center justify-center shadow-lg border border-border hover:border-primary">
+                                <i class="fab fa-git-alt text-3xl text-primary" title="Git"></i>
+                            </div>
+                            <h4 class="font-semibold text-foreground" data-bind="tech.name">Git</h4>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="max-w-6xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-center mb-8 text-foreground">Core Competencies</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <!-- @MAP: softSkills.map(skill => ( -->
+                        <div class="bg-card rounded-lg p-6 text-center shadow-lg border border-border hover:border-primary transition-colors">
+                            <i class="fas fa-lightbulb text-2xl text-accent mb-3"></i>
+                            <h4 class="font-semibold text-foreground" data-bind="skill.name">Problem Solving</h4>
+                        </div>
+                        <div class="bg-card rounded-lg p-6 text-center shadow-lg border border-border hover:border-primary transition-colors">
+                            <i class="fas fa-comments text-2xl text-primary mb-3"></i>
+                            <h4 class="font-semibold text-foreground" data-bind="skill.name">Communication</h4>
+                        </div>
+                        <div class="bg-card rounded-lg p-6 text-center shadow-lg border border-border hover:border-primary transition-colors">
+                            <i class="fas fa-clock text-2xl text-accent mb-3"></i>
+                            <h4 class="font-semibold text-foreground" data-bind="skill.name">Time Management</h4>
+                        </div>
+                        <div class="bg-card rounded-lg p-6 text-center shadow-lg border border-border hover:border-primary transition-colors">
+                            <i class="fas fa-tasks text-2xl text-primary mb-3"></i>
+                            <h4 class="font-semibold text-foreground" data-bind="skill.name">Project Management</h4>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TechnicalSkillsSection -->
+
+    <!-- Projects Section -->
+    <!-- @COMPONENT: ProjectsSection [showcase of personal projects] -->
+    <section id="projects" class="py-16 bg-card">
+        <div class="container mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold text-center mb-12 text-foreground">Personal Projects</h2>
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-1 gap-8">
+                        <!-- @MAP: projects.map(project => ( -->
+                        <div class="project-card bg-background rounded-xl p-8 shadow-lg border border-border">
+                            <div class="flex flex-col lg:flex-row gap-8">
+                                <div class="flex-grow">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-tools text-xl text-primary-foreground"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold text-foreground" data-bind="project.name">Fix Buddy: Service Marketplace Platform</h3>
+                                    </div>
+                                    <p class="text-muted-foreground mb-6 text-lg leading-relaxed" data-bind="project.description">
+                                        Developed a comprehensive service marketplace using Node.js, JavaScript, MongoDB, EJS, JWT authentication, and bcrypt.js 
+                                        for hashing. Solves the hassle of finding trusted professionals for services like plumbing, repairs, etc. through a centralized 
+                                        platform. Implemented robust registration, profile management, service listing, booking system, and request handling with 
+                                        secure user authentication.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="font-semibold text-foreground mb-3">Technologies Used:</h4>
+                                        <div class="flex flex-wrap gap-3">
+                                            <!-- @MAP: project.technologies.map(tech => ( -->
+                                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium" data-bind="tech.name">Node.js</span>
+                                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium" data-bind="tech.name">JavaScript</span>
+                                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium" data-bind="tech.name">MongoDB</span>
+                                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium" data-bind="tech.name">EJS</span>
+                                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium" data-bind="tech.name">JWT</span>
+                                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium" data-bind="tech.name">bcrypt.js</span>
+                                            <!-- @END_MAP )) -->
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-lg font-medium transition-colors" data-event="click:viewProject">
+                                            <i class="fas fa-external-link-alt mr-2"></i>
+                                            View Details
+                                        </button>
+                                        <button class="border border-border hover:bg-muted text-foreground px-6 py-2 rounded-lg font-medium transition-colors" data-event="click:viewCode">
+                                            <i class="fab fa-github mr-2"></i>
+                                            Source Code
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsSection -->
+
+    <!-- Achievements Section -->
+    <!-- @COMPONENT: AchievementsSection [display of awards and accomplishments] -->
+    <section id="achievements" class="py-16 bg-background">
+        <div class="container mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold text-center mb-12 text-foreground">Achievements</h2>
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- @MAP: achievements.map(achievement => ( -->
+                        <div class="achievement-badge bg-card rounded-xl p-6 shadow-lg border border-border">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-trophy text-2xl text-accent-foreground"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground" data-bind="achievement.title">DRYJAM 2015</h3>
+                                <p class="text-sm text-primary font-medium" data-bind="achievement.year">2015</p>
+                            </div>
+                            <p class="text-muted-foreground text-center" data-bind="achievement.description">
+                                My team "Web Buddy" created FireSafety and was among the top teams. The college's flagship tech fest recognition.
+                            </p>
+                        </div>
+
+                        <div class="achievement-badge bg-card rounded-xl p-6 shadow-lg border border-border">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-graduation-cap text-2xl text-primary-foreground"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground" data-bind="achievement.title">SoloLearn</h3>
+                                <p class="text-sm text-primary font-medium" data-bind="achievement.year">2023</p>
+                            </div>
+                            <p class="text-muted-foreground text-center" data-bind="achievement.description">
+                                Finished in Scholarships and recognized among the college's flagship tech fest participants.
+                            </p>
+                        </div>
+
+                        <div class="achievement-badge bg-card rounded-xl p-6 shadow-lg border border-border">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-code text-2xl text-accent-foreground"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground" data-bind="achievement.title">LeetCode</h3>
+                                <p class="text-sm text-primary font-medium" data-bind="achievement.year">Ongoing</p>
+                            </div>
+                            <p class="text-muted-foreground text-center" data-bind="achievement.description">
+                                Solved 250+ questions and participated in multiple contests, demonstrating strong problem-solving skills.
+                            </p>
+                        </div>
+
+                        <div class="achievement-badge bg-card rounded-xl p-6 shadow-lg border border-border">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-certificate text-2xl text-primary-foreground"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground" data-bind="achievement.title">PEE Mains 24</h3>
+                                <p class="text-sm text-primary font-medium" data-bind="achievement.year">2024</p>
+                            </div>
+                            <p class="text-muted-foreground text-center" data-bind="achievement.description">
+                                Achieved AIR DSR 29.34 percentile in the competitive examination.
+                            </p>
+                        </div>
+
+                        <div class="achievement-badge bg-card rounded-xl p-6 shadow-lg border border-border">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-medal text-2xl text-accent-foreground"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground" data-bind="achievement.title">Olympics</h3>
+                                <p class="text-sm text-primary font-medium" data-bind="achievement.year">Multiple Years</p>
+                            </div>
+                            <p class="text-muted-foreground text-center" data-bind="achievement.description">
+                                Multiple-time medalist in various Olympic competitions, showcasing athletic excellence.
+                            </p>
+                        </div>
+
+                        <div class="achievement-badge bg-card rounded-xl p-6 shadow-lg border border-border">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-heart text-2xl text-primary-foreground"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground" data-bind="achievement.title">Red Cross</h3>
+                                <p class="text-sm text-primary font-medium" data-bind="achievement.year">2-Year Certification</p>
+                            </div>
+                            <p class="text-muted-foreground text-center" data-bind="achievement.description">
+                                Completed 2-year school certification program, demonstrating commitment to community service.
+                            </p>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <!-- Sports Achievements -->
+                    <div class="mt-12">
+                        <h3 class="text-2xl font-semibold text-center mb-8 text-foreground">Sports Achievements</h3>
+                        <div class="bg-card rounded-xl p-8 shadow-lg border border-border">
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <i class="fas fa-running text-3xl text-accent-foreground"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-foreground mb-4">Divisional Level Participation</h4>
+                                <p class="text-muted-foreground mb-6">
+                                    Participated at divisional level in multiple sports demonstrating athletic versatility and competitive spirit.
+                                </p>
+                                <div class="flex flex-wrap justify-center gap-3">
+                                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full font-medium">Badminton</span>
+                                    <span class="bg-accent/10 text-accent px-4 py-2 rounded-full font-medium">Backslip</span>
+                                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full font-medium">Chess</span>
+                                    <span class="bg-accent/10 text-accent px-4 py-2 rounded-full font-medium">Athletics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AchievementsSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [simple footer with copyright] -->
+    <footer class="bg-secondary text-secondary-foreground py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-secondary-foreground/80">
+                © 2024 <span data-bind="user.fullName">Rishi Raj Jaiswal</span>. All rights reserved.
+            </p>
+            <p class="text-secondary-foreground/60 mt-2">
+                Built with passion for technology and innovation.
+            </p>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // Mobile menu functionality
+        (function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        })();
+
+        // Fade in animation on scroll
+        (function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        })();
+
+        // Smooth scrolling for navigation links
+        (function() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        })();
+
+        // TODO: Implement project view functionality
+        // TODO: Implement GitHub repository links
+        // TODO: Add contact form functionality if needed in future
+    </script>
+</body>
+</html>
