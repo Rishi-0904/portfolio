@@ -3,17 +3,17 @@ import { Trophy, GraduationCap, Code, Award, Medal, Heart, Activity } from "luci
 export default function AchievementsSection() {
   const achievements = [
     {
-      title: "DRYJAM 2015",
+      title: "DEVJAM 2024",
       year: "2015",
-      description: "My team \"Web Buddy\" created FireSafety and was among the top teams. The college's flagship tech fest recognition.",
+      description: "My team \"Web Buddy\" created FixBuddy and was among the top teams. The college's flagship tech fest recognition.",
       icon: Trophy,
       iconColor: "text-accent-foreground",
       bgColor: "bg-accent"
     },
     {
-      title: "SoloLearn",
+      title: "Softathalon",
       year: "2023", 
-      description: "Finished in Scholarships and recognized among the college's flagship tech fest participants.",
+      description: "Selected for the interview Round and recognized among the college's flagship tech fest participants.",
       icon: GraduationCap,
       iconColor: "text-primary-foreground",
       bgColor: "bg-primary"
@@ -21,13 +21,13 @@ export default function AchievementsSection() {
     {
       title: "LeetCode",
       year: "Ongoing",
-      description: "Solved 250+ questions and participated in multiple contests, demonstrating strong problem-solving skills.",
+      description: "Solved 400+ questions and participated in multiple contests, demonstrating strong problem-solving skills.",
       icon: Code,
       iconColor: "text-accent-foreground",
       bgColor: "bg-accent"
     },
     {
-      title: "PEE Mains 24",
+      title: "JEE Mains 24",
       year: "2024",
       description: "Achieved AIR DSR 29.34 percentile in the competitive examination.",
       icon: Award,
@@ -35,9 +35,9 @@ export default function AchievementsSection() {
       bgColor: "bg-primary"
     },
     {
-      title: "Olympics",
+      title: "Olympiad",
       year: "Multiple Years",
-      description: "Multiple-time medalist in various Olympic competitions, showcasing athletic excellence.",
+      description: "Multiple-time medalist in various Olympiads, showcasing academic excellence.",
       icon: Medal,
       iconColor: "text-accent-foreground",
       bgColor: "bg-accent"
