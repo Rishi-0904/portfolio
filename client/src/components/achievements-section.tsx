@@ -4,7 +4,7 @@ export default function AchievementsSection() {
   const achievements = [
     {
       title: "DEVJAM 2024",
-      year: "2015",
+      year: "2024",
       description: "My team \"Web Buddy\" created FixBuddy and was among the top teams. The college's flagship tech fest recognition.",
       icon: Trophy,
       iconColor: "text-accent-foreground",
@@ -12,7 +12,7 @@ export default function AchievementsSection() {
     },
     {
       title: "Softathalon",
-      year: "2023", 
+      year: "2024", 
       description: "Selected for the interview Round and recognized among the college's flagship tech fest participants.",
       icon: GraduationCap,
       iconColor: "text-primary-foreground",
@@ -29,7 +29,7 @@ export default function AchievementsSection() {
     {
       title: "JEE Mains 24",
       year: "2024",
-      description: "Achieved AIR DSR 29.34 percentile in the competitive examination.",
+      description: "Achieved AIR 10561 99.34 percentile in the competitive examination.",
       icon: Award,
       iconColor: "text-primary-foreground",
       bgColor: "bg-primary"

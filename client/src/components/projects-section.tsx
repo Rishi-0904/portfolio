@@ -65,9 +65,11 @@ export default function ProjectsSection() {
                       View Details
                     </Button>
                     <Button 
+                      onClick={() => window.location.href = "https://github.com/Rishi-0904/portfolio"}
                       variant="outline"
                       className="border-border hover:bg-muted text-foreground"
                       data-testid="button-view-source"
+                    
                     >
                       <Github className="w-4 h-4 mr-2" />
                       Source Code
